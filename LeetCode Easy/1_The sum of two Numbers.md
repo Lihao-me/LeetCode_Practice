@@ -53,7 +53,7 @@ return a;
    同时把运用哈希表法解此题的几种方法贴上，相信对数据结构有较好掌握了回过头来看这道题应该有更大收获吧。
    
    #### 1、使用hash表，两次遍历数组
-   ```c
+   ```c++
     // vector<int> twoSum(vector<int>& nums, int target) {
 
     //     vector<int> v(2);
@@ -79,7 +79,7 @@ return a;
     ```
 
     #### 2、使用hash表，一次遍历数组
-    ```c
+    ```c++
     vector<int> twoSum(vector<int>& nums, int target) {
 
         vector<int> v(2);
@@ -104,7 +104,7 @@ return a;
     ```
 
     #### 3、先从hash表中找，找不到再保存
-    ```c
+    ```c++
     vector<int> twoSum(vector<int>& nums, int target) {
 
         vector<int> v(2);
