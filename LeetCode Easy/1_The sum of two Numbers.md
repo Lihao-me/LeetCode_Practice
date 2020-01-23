@@ -49,3 +49,85 @@ return a;
    返 回  值：成功，返回分配的内存单元的起始地址；否则返回0
  - 对于该题虽然表面上没有用到*returnSize这一变量，但是题中的隐含要求把它赋值否则结果错误。
  - 通过欣赏一些C语言网友的解法获益匪浅，其实自己的暴力解法并非最优的，用时上仅仅击败了17.19%的用户。网友所说的hash表解法还有待学习和掌握。
+   这篇帖子用比喻的方式生动地介绍了哈希表的概念，也算对哈希表有了初步的认识吧。https://blog.csdn.net/qq_34888036/article/details/80880487
+   同时把运用哈希表法解此题的几种方法贴上，相信对数据结构有较好掌握了回过头来看这道题应该有更大收获吧。
+   
+   #### 1、使用hash表，两次遍历数组
+   ```c
+    // vector<int> twoSum(vector<int>& nums, int target) {
+
+    //     vector<int> v(2);
+    //     unordered_map<int, int> map;
+    //     for (int i = 0; i < nums.size(); ++i)
+    //     {
+    //         map.insert(pair<int, int>(nums.at(i), i));
+    //     }
+
+    //     for (int i = 0; i < nums.size(); ++i)
+    //     {
+    //         auto found = map.find(target - nums.at(i));
+    //         if (found != map.end() && found->second != i)  //注意：两个元素的下标不能相同  题目：你不能重复利用这个数组中同样的元素。
+    //         {
+    //             v.at(0) = i;
+    //             v.at(1) = found->second;
+    //             return v;
+    //         }
+    //     }
+
+    //     return v;
+    // }
+    ```
+
+    #### 2、使用hash表，一次遍历数组
+    ```c
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        vector<int> v(2);
+        unordered_map<int, int> map;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            map.insert(pair<int, int>(nums.at(i), i));
+
+            auto found = map.find(target - nums.at(i));
+            if (found != map.end() && found->second != i) //注意：下标不能相同  题目：你不能重复利用这个数组中同样的元素。
+            {
+                //注意：这里的found->second会小于i
+                v.at(0) = found->second;
+                v.at(1) = i;
+
+                return v;
+            }
+        }
+
+        return v;
+    }
+    ```
+
+    #### 3、先从hash表中找，找不到再保存
+    ```c
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        vector<int> v(2);
+        unordered_map<int, int> map;
+        for (int i = 0; i < nums.size(); ++i)
+        {
+            auto found = map.find(target - nums.at(i));
+            if (found != map.end())
+            {
+                //注意：这里的found->second会小于i（因为i还没存）
+                v.at(0) = found->second;
+                v.at(1) = i;
+
+                return v;
+            }
+
+            map.insert(pair<int, int>(nums.at(i), i));
+        }
+
+        return v;
+    }
+
+};
+```
+(作者：eric-345)
+
