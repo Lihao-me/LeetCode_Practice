@@ -54,7 +54,7 @@ bool isPerfectSquare(int num){
    如果 guess_squared == num，则 num 是一个完全平方数，返回 true。
    如果 guess_squared > num ，设置右边界 right = x-1。
    否则设置左边界为 left = x+1。
-   还有一个图片以供很好理解：！[图片](https://github.com/Lihao-me/Photos/blob/master/untitled.png)
+   还有一个图片以供很好理解：！[图片](https://github.com/Lihao-me/Pictures/blob/master/isPerfectSquare.png)
  - 终于对二分法有了深入的理解。这道题另一个需要领会的点在于溢出问题，在多次尝试都是溢出后参考了网友的解释：首先要知道一个前提，整型底数上
    限为46340 即  整数最大值为 2147483647 而其中最大的有效的完全平方数为 46340 *46340 = 2147395600。
  - 而就这道题本身来说也有很多不错的思路。
