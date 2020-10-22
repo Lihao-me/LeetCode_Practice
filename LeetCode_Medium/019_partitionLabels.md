@@ -18,11 +18,10 @@
 提示：
 - S的长度在[1, 500]之间。
 - S只包含小写字母 'a' 到 'z' 。
-```
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/partition-labels
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
-```
+
+>来源：力扣（LeetCode）              
+链接：https://leetcode-cn.com/problems/partition-labels                
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。                
 
 ### 代码
 ```c++
